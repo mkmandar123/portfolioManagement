@@ -75,7 +75,6 @@ class PortfolioController {
             }
         }
 
-        // Write the changes to portfolio in DB
         portfolio.stocks.forEach((stockObject: PortfolioTypes.Stocks) => {
             if (stockObject.symbol === stock.symbol) {
                 stockObject.quantity = stockInUserPortfolio.quantity;
@@ -90,6 +89,8 @@ class PortfolioController {
 
         // For removing stocks with zero quantity.
         portfolio.stocks = portfolio.stocks.filter((stockToBeUpdated: PortfolioTypes.Stocks) => stockToBeUpdated.quantity > 0);
+
+        // Write the changes to portfolio in DB
         portfolioToBeUpdated.set('stocks', portfolio.stocks);
         await portfolioToBeUpdated.save();
         return !stockInUserPortfolio || stockInUserPortfolio?.quantity < stock.quantity;
