@@ -34,6 +34,7 @@ class TradeController {
             symbol,
             tradeType,
             price,
+            quantity,
         });
 
         await trade.save();
