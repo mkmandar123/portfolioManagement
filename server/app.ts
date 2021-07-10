@@ -21,7 +21,7 @@ function startServer(): void {
 }
 
 
-connect('mongodb://localhost:27017/portfolioManagement',
+connect(env.MONGO_URI,
     { useNewUrlParser: true, useUnifiedTopology: true }).then(() => startServer());
 
 export default app;
