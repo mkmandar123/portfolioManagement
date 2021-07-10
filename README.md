@@ -25,9 +25,28 @@ Please follow the documentation hosted on Postman.
 https://documenter.getpostman.com/view/13678014/Tzm6nGzR
 ```
 
+This project is hosted on AWS, but you can also run it on your system locally.
+
+Before trying to start the project, please create .env file and copy values from default.env to .env file
+
+To run the project:
+```bash
+npm run start
+```
+
+To run the project in watch mode:
+```bash
+npm run debug
+```
+
+To build the project:
+```bash
+npm run build
+```
+
 ## Assumptions
 I have assumed that currently only single user will be using the system, but I've also taken in care so that in future it'll be easy to add more users.
 
-Also I have considered user to have infinite balance.
+Also, I have considered user to have infinite balance.
 
 Please let me know your feedback.
