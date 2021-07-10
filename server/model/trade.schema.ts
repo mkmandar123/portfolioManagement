@@ -1,8 +1,8 @@
-import { Schema, Types } from 'mongoose';
+import { model, Schema, Types } from 'mongoose';
 import { TradeTypes } from "../types/trade";
 
 
-const Trade = new Schema<TradeTypes.Trade>({
+const TradeSchema = new Schema<TradeTypes.Trade>({
     _id: Types.ObjectId,
     user: {
         type: Schema.Types.ObjectId,
@@ -12,5 +12,7 @@ const Trade = new Schema<TradeTypes.Trade>({
     tradeType: String,
     symbol: String,
 });
+
+const Trade = model<TradeTypes.Trade>('Trade', TradeSchema);
 
 module.exports = Trade;

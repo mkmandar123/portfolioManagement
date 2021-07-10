@@ -1,8 +1,8 @@
-import { Schema, Types } from 'mongoose';
+import { model, Schema, Types } from 'mongoose';
 import { UserTypes } from "../types/user";
 
 
-const User = new Schema<UserTypes.User>({
+const UserSchema = new Schema<UserTypes.User>({
     _id: Types.ObjectId,
     portfolio: {
         type: Schema.Types.ObjectId,
@@ -11,5 +11,7 @@ const User = new Schema<UserTypes.User>({
     balance: Number,
     name: String,
 });
+
+const User = model<UserTypes.User>('User', UserSchema);
 
 module.exports = User;

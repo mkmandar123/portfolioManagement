@@ -1,8 +1,8 @@
-import { Schema, Types } from 'mongoose';
+import { Schema, Types, model } from 'mongoose';
 import { PortfolioTypes } from "../types/portfolio";
 
 
-const Portfolio = new Schema<PortfolioTypes.Portfolio>({
+const PortfolioSchema = new Schema<PortfolioTypes.Portfolio>({
         _id: Types.ObjectId,
         user: {
             type: Schema.Types.ObjectId,
@@ -10,5 +10,7 @@ const Portfolio = new Schema<PortfolioTypes.Portfolio>({
         },
         stocks: Array,
     });
+
+const Portfolio = model<PortfolioTypes.Portfolio>('Portfolio', PortfolioSchema);
 
 module.exports = Portfolio;

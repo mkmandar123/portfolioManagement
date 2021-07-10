@@ -4,6 +4,7 @@ import http from 'http';
 import expressConfig from './config/express';
 import registerRoutes from './routes';
 import { env } from './config/env';
+import { connect } from 'mongoose';
 
 const app = express();
 const server = http.createServer(app);
@@ -19,6 +20,8 @@ function startServer(): void {
   });
 }
 
-startServer();
+
+connect('mongodb://localhost:27017/portfolioManagement',
+    { useNewUrlParser: true, useUnifiedTopology: true }).then(() => startServer());
 
 export default app;
