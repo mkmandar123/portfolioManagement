@@ -1,8 +1,13 @@
 import { EnvType } from '../types';
 
 const Constant = {
-  Test: {
-    TEST: 'TEST',
+  TRANSACTION_TYPES: {
+    BUY: 'BUY',
+    SELL: 'SELL'
+  },
+  TRANSACTION_CODES: {
+    BUY: 1,
+    SELL: -1,
   },
 };
 

@@ -7,7 +7,7 @@ class UserController {
     static async createUser(): Promise<UserTypes.User> {
         const user = new User({
             _id: new Types.ObjectId(),
-            balance: 10000,
+            balance: 9999999999, // ASSUMPTION: USER will have infinite balance
         });
         const portfolio = await PortfolioController.findOrCreatePortfolio(user);
         user.portfolio = portfolio;
@@ -20,6 +20,14 @@ class UserController {
             return UserController.createUser();
         }
         return user;
+    }
+
+    static async decrementUserBalance(user: UserTypes.User, amount: number): Promise<UserTypes.User> {
+        const userObj = await User.findOne({ _id: user._id }).exec();
+
+        // ASSUMPTION: User is having infinite balance.
+        userObj.balance -= amount;
+        return userObj.save();
     }
 }
 

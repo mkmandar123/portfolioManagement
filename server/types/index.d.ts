@@ -2,8 +2,13 @@
 declare namespace EnvType {
   interface Shared {
     Constant: {
-      Test: {
-        TEST: string;
+      TRANSACTION_TYPES: {
+        BUY: string;
+        SELL: string;
+      };
+      TRANSACTION_CODES: {
+        BUY: number;
+        SELL: number;
       };
     };
   }

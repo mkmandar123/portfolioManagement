@@ -11,6 +11,7 @@ const TradeSchema = new Schema<TradeTypes.Trade>({
     price: Number,
     tradeType: String,
     symbol: String,
+    quantity: Number,
 });
 
 export const Trade = model<TradeTypes.Trade>('Trade', TradeSchema);
