@@ -15,7 +15,7 @@ class UserController {
     }
 
     static async findOrCreateUser(): Promise<UserTypes.User> {
-        const user = User.findOne({}).exec();
+        const user = await User.findOne({}).exec();
         if (!user) {
             return UserController.createUser();
         }
