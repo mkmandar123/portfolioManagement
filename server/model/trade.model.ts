@@ -13,6 +13,4 @@ const TradeSchema = new Schema<TradeTypes.Trade>({
     symbol: String,
 });
 
-const Trade = model<TradeTypes.Trade>('Trade', TradeSchema);
-
-module.exports = Trade;
+export const Trade = model<TradeTypes.Trade>('Trade', TradeSchema);

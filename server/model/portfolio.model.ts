@@ -11,6 +11,4 @@ const PortfolioSchema = new Schema<PortfolioTypes.Portfolio>({
         stocks: Array,
     });
 
-const Portfolio = model<PortfolioTypes.Portfolio>('Portfolio', PortfolioSchema);
-
-module.exports = Portfolio;
+export const Portfolio = model<PortfolioTypes.Portfolio>('Portfolio', PortfolioSchema);

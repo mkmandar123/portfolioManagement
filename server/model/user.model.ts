@@ -12,6 +12,4 @@ const UserSchema = new Schema<UserTypes.User>({
     name: String,
 });
 
-const User = model<UserTypes.User>('User', UserSchema);
-
-module.exports = User;
+export const User = model<UserTypes.User>('User', UserSchema);
