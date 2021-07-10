@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "rootDir": "./",
+    "module": "commonjs",
+    "outDir": "dist",
+    "removeComments": false,
+    "target": "es2017",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true
+  },
+  "typeRoots": [
+    "./node_modules/@types/"
+  ],
+  "exclude": [
+    "node_modules",
+    "typings",
+    "mocha.conf.js",
+    "setup.ts",
+    "spec.js",
+    "gulpfile.babel.js",
+    "e2e"
+  ],
+  "filesGlob": [
+    "client/{app,components}/**/!(*.spec|*.d).ts"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "resolveGlobs": true,
+    "forkChecker": true
+  }
+}
