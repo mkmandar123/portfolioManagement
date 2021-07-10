@@ -9,7 +9,7 @@ class UserController {
             _id: new Types.ObjectId(),
             balance: 10000,
         });
-        const portfolio = await PortfolioController.createPortfolio(user);
+        const portfolio = await PortfolioController.findOrCreatePortfolio(user);
         user.portfolio = portfolio;
         return user.save();
     }
