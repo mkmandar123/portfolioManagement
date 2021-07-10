@@ -15,6 +15,29 @@ class PortfolioController {
         return portfolio;
     }
 
+    static async getPortfolioReturns(req: any, res: any): Promise<void> {
+        // ASSUMPTION: Only one user is using the system.
+        const portfolio = await Portfolio.findOne({}).exec();
+
+        const stocks = portfolio.stocks;
+        let returns = 0;
+        stocks.forEach((stock: PortfolioTypes.Stocks) => {
+            const currentStockReturn = (PortfolioController.getCurrentPriceForStock(stock.symbol) - stock.avgPrice) * stock.quantity;
+            stock['returns'] = currentStockReturn;
+            returns += currentStockReturn;
+        });
+        return res.send({
+            totalReturns: returns,
+            stocks
+        });
+    }
+
+    static getCurrentPriceForStock(symbol: string): number {
+        // ASSUMPTION: Current price for all stock is considered to be Rs.100.
+        // In future we can integrate API and pass symbol to get current price.
+        return 100;
+    }
+
     static async createPortfolio(user: UserTypes.User): Promise<PortfolioTypes.Portfolio> {
         const portfolio = new Portfolio({
             _id: new Types.ObjectId(),
