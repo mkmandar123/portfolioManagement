@@ -29,6 +29,11 @@ This project is hosted on AWS, but you can also run it on your system locally.
 
 Before trying to start the project, please create .env file and copy values from default.env to .env file
 
+To install dependencies:
+```bash
+npm install
+```
+
 To run the project:
 ```bash
 npm run start
