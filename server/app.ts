@@ -7,7 +7,7 @@ import { env } from './config/env';
 
 const app = express();
 const server = http.createServer(app);
-const port = env.PORT || 3003;
+const port = env.PORT || 3001;
 
 expressConfig(app);
 registerRoutes(app);
@@ -19,6 +19,6 @@ function startServer(): void {
   });
 }
 
-setImmediate(startServer);
+startServer();
 
 export default app;

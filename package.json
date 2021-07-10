@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development ts-node-dev --transpileOnly ./server/app.ts",
-    "debug": "NODE_ENV=development ts-node-dev --transpileOnly --inspect -- ./server/app.ts",
+    "start": "NODE_ENV=development ts-node-dev --transpile-only ./server/app.ts",
+    "debug": "NODE_ENV=development ts-node-dev --transpile-only --inspect -- ./server/app.ts",
     "clean-dist": "rm -rf dist",
     "build": "cd dist; rm -rf *; cd ..;tsc --project tsconfig.json; cp package*.json dist;"
   },

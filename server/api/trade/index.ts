@@ -1,9 +1,8 @@
 const express = require('express');
-const controller = require('server/api/trade/trade.controller');
+const controller = require('./trade.controller');
 
 const router = express.Router();
 
-router.post('/log', controller.createLog);
-router.post('/assert', controller.assert);
+router.post('/test', (req, res) => res.send({success: true}));
 
 export default router;
