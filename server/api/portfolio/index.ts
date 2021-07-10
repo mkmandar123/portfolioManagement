@@ -1,8 +1,10 @@
+import { PortfolioController } from "./portfolio.controller";
+
 const express = require('express');
-const controller = require('./portfolio.controller');
 
 const router = express.Router();
 
-router.post('/test', (req, res) => res.send({success: true}));
+router.get('/getPortfolio', PortfolioController.getPortfolio);
+router.get('/getPortfolioReturns', PortfolioController.getPortfolioReturns);
 
 export default router;

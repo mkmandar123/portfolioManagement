@@ -1,8 +1,10 @@
+import { TradeController } from './trade.controller';
+
 const express = require('express');
-const controller = require('./trade.controller');
 
 const router = express.Router();
 
-router.post('/test', (req, res) => res.send({success: true}));
+router.post('/createTrade', TradeController.createTrade);
+router.get('/getAllTrades', TradeController.getAllTrades);
 
 export default router;

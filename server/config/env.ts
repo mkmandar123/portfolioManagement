@@ -10,6 +10,7 @@ const variables = setupCompleted ? dotenv.config({ path: envFile }) : {};
 declare interface EnvJson {
   NODE_ENV: string;
   PORT: string;
+  MONGO_URI: string;
 }
 
 const rawEnv: any = variables.parsed || variables;
