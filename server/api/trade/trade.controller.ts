@@ -3,7 +3,6 @@ import { Types } from 'mongoose';
 import { UserController } from "../user/user.controller";
 import { Shared } from "../../config/shared";
 import { PortfolioController } from "../portfolio/portfolio.controller";
-import {TradeTypes} from "../../types/trade";
 
 class TradeController {
     static async createTrade(req: any, res: any): Promise<void> {

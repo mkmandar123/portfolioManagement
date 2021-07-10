@@ -7,6 +7,7 @@ import {Shared} from "../../config/shared";
 
 class PortfolioController {
     static async findOrCreatePortfolio(user: UserTypes.User): Promise<PortfolioTypes.Portfolio> {
+        // ASSUMPTION: Only one user is using the system.
         const portfolio = await Portfolio.findOne({}).exec();
         if (!portfolio) {
             return PortfolioController.createPortfolio(user);
@@ -21,6 +22,11 @@ class PortfolioController {
             stocks: []
         });
         return portfolio.save();
+    }
+
+    static async getPortfolio(req: any, res: any): Promise<void> {
+        const portfolio = await Portfolio.findOne({}).exec();
+        return res.send(portfolio);
     }
 
     static async checkIfSellTransactionCanBePerformed(user: UserTypes.User, symbol: string, quantity: number): Promise<boolean> {
@@ -58,6 +64,9 @@ class PortfolioController {
         }
 
         const portfolioToBeUpdated = await Portfolio.findById(portfolio._id);
+
+        // For removing stocks with zero quantity.
+        portfolio.stocks = portfolio.stocks.filter((stockToBeUpdated: PortfolioTypes.Stocks) => stockToBeUpdated.quantity > 0);
         portfolioToBeUpdated.set('stocks', portfolio.stocks);
         await portfolioToBeUpdated.save();
         return !stockInUserPortfolio || stockInUserPortfolio?.quantity < stock.quantity;
