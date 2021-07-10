@@ -3,6 +3,7 @@ import { Types } from 'mongoose';
 import { UserController } from "../user/user.controller";
 import { Shared } from "../../config/shared";
 import { PortfolioController } from "../portfolio/portfolio.controller";
+import {TradeTypes} from "../../types/trade";
 
 class TradeController {
     static async createTrade(req: any, res: any): Promise<void> {
@@ -40,6 +41,12 @@ class TradeController {
         await PortfolioController.updateUserPortfolio(user, { symbol, avgPrice: price, quantity }, tradeType);
         await UserController.decrementUserBalance(user, quantity * price);
         return res.send(trade).end();
+    }
+
+    static async getAllTrades(req: any, res: any): Promise<void> {
+        // ASSUMPTION: Only one user is using the system so skipping check to fetch trades only for particular user.
+        const allTrades = await Trade.find({}).exec();
+        return res.send(allTrades);
     }
 }
 
