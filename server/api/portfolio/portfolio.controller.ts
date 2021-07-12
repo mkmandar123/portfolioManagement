@@ -4,6 +4,7 @@ import { PortfolioTypes } from "../../types/portfolio";
 import { Types } from 'mongoose';
 import _ from 'lodash';
 import {Shared} from "../../config/shared";
+import rp from "request-promise";
 
 class PortfolioController {
     static async findOrCreatePortfolio(user: UserTypes.User): Promise<PortfolioTypes.Portfolio> {
@@ -66,6 +67,7 @@ class PortfolioController {
         const isStockAlreadyPresentInPortfolio = !!stockInUserPortfolio;
 
         if (stockInUserPortfolio) {
+            stockInUserPortfolio.avgPrice = ((stockInUserPortfolio.quantity * stockInUserPortfolio.avgPrice) + (stock.quantity * stock.avgPrice)) / (stock.quantity + stockInUserPortfolio.quantity)
             stockInUserPortfolio.quantity += (stock.quantity * Shared.Constant.TRANSACTION_CODES[tradeType.toUpperCase()]);
         } else {
             stockInUserPortfolio = {
